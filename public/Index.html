@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+    <title>Document</title>
+  
+   
+</head>
+<body>
+
+    <button id="btn" alt="Click ME!" style="width: 100px; height: 40px">Click Me!</button>
+    <img id="cats" style="width: 100px; height: 200">
+
+   <script>
+    document.body.style.backgroundColor="beige"
+    document.getElementById('btn').onclick = async()=> {
+       try {  
+        const response = await fetch('/api/cats')
+        const [cats]= await response.json()
+        const catsimg = cats.url
+        const catimg = document.getElementById('cats')
+        catimg.src = catsimg
+        catimg.style.display = 'block'
+        
+    }
+catch(error) {
+    console.error('error', error)
+}}
+   </script>
+</body>
+</html>
